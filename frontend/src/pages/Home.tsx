@@ -1,29 +1,32 @@
-import Button from "../components/Button";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { getUserData } from "../feature/basicInfo/getUserData";
+import { useContext, useEffect, useState } from "react";
 import { getToken } from "../feature/basicInfo/getToken";
-import { loginWithGithub } from "../feature/basicInfo/loginWithGithub";
-// shouldn't this be put into .env?
+import { loginWithGithub, logoutWithGithub } from "../feature/basicInfo/logWithGithub";
+import Button from "../components/Button";
+import UserContext from "../contexts/user";
 
 export default function Home(): JSX.Element {
-	const [userData, setUserData] = useState("");
-
+	const { auth, userData, setUserData } = useContext(UserContext);
+	console.log(userData);
 	useEffect(() => {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const codeParam = urlParams.get("code");
-		if (codeParam && localStorage.getItem("githubAccessToken") === null) {
-			getToken(codeParam);
+		if (codeParam && localStorage.getItem("githubAccessToken") == null) {
+			getToken(codeParam, userData, setUserData);
 		}
-		// getUserData(userData, setUserData);
 	}, []);
 
 	return (
 		<>
-			<Button onClick={loginWithGithub}>login to Github</Button>
-			<Button onClick={() => getUserData(userData, setUserData)}>get user data</Button>
-			{JSON.stringify(userData)}
+			{auth ? (
+				<>
+					<div>Hello {userData.login}</div>
+					<Button onClick={logoutWithGithub}>logout github</Button>
+				</>
+			) : (
+				<Button onClick={loginWithGithub}>login Github</Button>
+			)}
 		</>
 	);
 }

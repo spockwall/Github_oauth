@@ -34,7 +34,6 @@ app.get("/getAccessToken", async (req: any, res: any) => {
 		},
 	})
 		.then((response) => {
-			console;
 			return response.json();
 		})
 		.then((data) => {

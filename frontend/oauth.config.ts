@@ -7,6 +7,10 @@ export const oauthConfig = {
 	scope: "",
 };
 
-export const serverUrl = {
+export const server = {
 	localUrl: "http://localhost:3000",
+};
+
+export const client = {
+	localUrl: "http://localhost:5173",
 };
