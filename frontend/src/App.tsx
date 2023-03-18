@@ -4,6 +4,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 				<div id="body">
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/login" element={<Login />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</div>

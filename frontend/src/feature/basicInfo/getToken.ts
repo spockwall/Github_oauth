@@ -1,7 +1,9 @@
 import axios from "axios";
 import { server, client } from "../../../oauth.config";
+import { userStateType } from "../../contexts/user";
 
-export function getToken(codeParam, userData: Object, setUserData: Function) {
+export function getToken(codeParam, userState: userStateType) {
+	const { auth, setAuth, userData, setUserData } = userState;
 	axios
 		.get(server.localUrl + "/getAccessToken", {
 			// get github access token
@@ -11,6 +13,7 @@ export function getToken(codeParam, userData: Object, setUserData: Function) {
 			// set token to localstorage
 			const token = response.data.access_token;
 			localStorage.setItem("githubAccessToken", token);
+			setAuth(true);
 			return token;
 		})
 		.then((token) => {

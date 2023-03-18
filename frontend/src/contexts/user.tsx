@@ -1,6 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 
-const UserContext = createContext();
+export interface userStateType {
+	auth: Boolean;
+	setAuth: Function;
+	userData: Object;
+	setUserData: Function;
+}
+const UserContext = createContext<userStateType>();
 
 export const UserContextProvider = ({ children }: { children: JSX.Element[] | null }) => {
 	const [userData, setUserData] = useState<Object>(null);
@@ -17,6 +23,7 @@ export const UserContextProvider = ({ children }: { children: JSX.Element[] | nu
 		<UserContext.Provider
 			value={{
 				auth,
+				setAuth,
 				userData,
 				setUserData,
 			}}
