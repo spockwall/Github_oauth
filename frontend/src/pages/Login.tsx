@@ -1,5 +1,5 @@
 import useAuth from "../hooks/useAuth";
-import { loginWithGithub } from "../feature/basicInfo/logWithGithub";
+import { loginWithGithub } from "../feature/basicInfo/login";
 import Button from "../components/Button";
 
 export default function Login(): JSX.Element {
