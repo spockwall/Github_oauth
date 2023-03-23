@@ -14,9 +14,11 @@ button {
 	transition: all 0.3s ease 0s;
 	cursor: pointer;
 	outline: none;
-	/* margin: 2rem; */
+	margin: 1rem;
 }
 
-button {
-	width: "fit-content";
+.button-container {
+	margin: auto;
+	width: 60%;
+	margin-bottom: 1rem;
 }

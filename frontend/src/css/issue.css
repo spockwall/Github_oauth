@@ -1,10 +1,12 @@
 .issue-create-container {
 	margin: auto;
 	width: 80%;
-	height: 30rem;
-	border: solid;
+	height: 35rem;
+	border: solid rgb(147, 145, 145);
 	border-radius: 10px;
 	padding: 1rem;
+	text-align: center;
+	background-color: rgb(231, 235, 237);
 }
 
 .issue-create-title {
@@ -17,7 +19,7 @@
 
 .issue-create-title-input {
 	margin: 0 2rem;
-	width: 20rem;
+	width: 50%;
 	padding: 0 0.5rem;
 }
 
@@ -29,11 +31,12 @@
 
 .issue-create-content-input {
 	margin: auto;
-	width: 100%;
+	width: 80%;
 	height: 60%;
-	border: solid;
-	padding: 3px;
+	border: solid rgb(147, 145, 145);
+	padding: 1rem;
 	overflow: scroll;
+	border-radius: 10px;
 }
 
 .btn-submit {

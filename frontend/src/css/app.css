@@ -48,5 +48,6 @@ html * {
 .hello {
 	margin: auto;
 	text-align: center;
-	font-size: larger;
+	font-size: 2rem;
+	font: bold;
 }

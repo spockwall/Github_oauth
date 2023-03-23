@@ -33,13 +33,11 @@ const reposColumnsConfig = [
 
 export default function RepoList(): JSX.Element {
 	const { userData } = useAuth();
-	const [repos, setRepos] = useState<Array[Object]>([]);
 	const [pagination, setPagination] = usePagination<Array>([]);
 	const fetchData = async () => {
-		const res_data = await getRepo(userData?.repos_url);
+		const res_data: Array[Object] = await getRepo(userData?.repos_url);
 		console.log(res_data);
-		setRepos(res_data);
-		setPagination({ ...pagination, data: res_data });
+		setPagination({ ...pagination, data: res_data ?? [] });
 	};
 	useEffect(() => {
 		if (userData) fetchData();

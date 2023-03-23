@@ -36,10 +36,20 @@ export default function IssueCreate(props): JSX.Element {
 				<div className="issue-create-container">
 					<div className="issue-create-title">
 						Title:
-						<input className="issue-create-title-input" type="text" ref={title} />
+						<input
+							className="issue-create-title-input"
+							type="text"
+							ref={title}
+							required
+						/>
 					</div>
-					<div className="issue-create-content">content</div>
-					<textarea className="issue-create-content-input" type="text" ref={content} />
+					<div className="issue-create-content">Issue Content</div>
+					<textarea
+						className="issue-create-content-input"
+						type="text"
+						ref={content}
+						required
+					/>
 					<div className="btn-submit">
 						<Button type="submit">submit</Button>
 					</div>
