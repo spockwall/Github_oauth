@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const useAuth = () => {
 	const userState = useContext(UserContext);
 	const navigate = useNavigate();
-	// console.log(userState.auth);
 	useEffect(() => {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);

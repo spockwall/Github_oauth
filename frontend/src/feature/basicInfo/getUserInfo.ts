@@ -28,7 +28,7 @@ export function getUserInfo(codeParam, userState: userStateType) {
 		})
 		.then((response) => {
 			const token = response.data.access_token;
-			localStorage.setItem("githubAccessToken", token); // set token to localstorage
+			if (token) localStorage.setItem("githubAccessToken", token); // set token to localstorage
 			setAuth(true);
 			getUserData(token, setUserData); // get user data and set user data after getting access token
 		})

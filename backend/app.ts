@@ -25,8 +25,12 @@ app.use(bodyParser.json());
 app.get("/getAccessToken", async (req: any, res: any) => {
 	const code = req.query.code;
 	console.log(code);
-
-	const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + code;
+	const client_id = "client_id=" + CLIENT_ID;
+	const client_secret = "client_secret=" + CLIENT_SECRET;
+	const code_res = "code=" + code;
+	const scope = "scope=repo%20user";
+	// const params = "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&code=" + code;
+	const params = "?" + client_id + "&" + client_secret + "&" + code_res + "&" + scope;
 	fetch("https://github.com/login/oauth/access_token" + params, {
 		method: "POST",
 		headers: {
@@ -50,7 +54,7 @@ app.get("/getUserData", (req: any, res: any) => {
 	fetch("https://api.github.com/user", {
 		method: "GET",
 		headers: {
-			"Authorization": accessToken, // Bearer Accesstoken
+			Authorization: accessToken, // Bearer Accesstoken
 		},
 	})
 		.then(async (response) => {

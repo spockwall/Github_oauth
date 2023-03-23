@@ -10,15 +10,7 @@ export default function Home(): JSX.Element {
 
 	return (
 		<>
-			<div>Hello {userData?.login}</div>
-			<Button onClick={logoutWithGithub}>logout github</Button>
-			<Button
-				onClick={() => {
-					navigate("/list");
-				}}
-			>
-				go to repos list
-			</Button>
+			<div className="hello">Hello {userData?.login} !!</div>
 		</>
 	);
 }

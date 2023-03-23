@@ -1,0 +1,22 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	list-style: none;
+	cursor: pointer;
+	font-size: 0.8rem;
+	height: 5rem;
+}
+.pagination a {
+	padding: 0.5rem 1rem;
+	color: get-color(primary, normal);
+}
+
+.pagination__link--active a {
+	background: get-color(primary, normal);
+	font-size: 1.2rem;
+}
+.pagination__link--disabled a {
+	color: rgb(198, 197, 202);
+}
