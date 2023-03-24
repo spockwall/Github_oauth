@@ -13,7 +13,7 @@ html * {
 .navbar {
 	height: 5rem;
 	border-bottom: 1px solid;
-	margin-bottom: 1rem;
+	margin-bottom: 3rem;
 }
 
 .navbar-item-container {
@@ -31,12 +31,17 @@ html * {
 	align-items: center;
 	width: 5rem;
 	font-weight: 500;
+	margin: 1rem;
+	border-radius: 1rem;
+	border: solid rgb(180, 180, 180);
 }
 
+.navitem .link {
+	color: rgb(129, 128, 128);
+}
 .logout {
 	position: absolute;
 	right: 0;
-	/* width: 5rem; */
 	margin: 2rem;
 }
 
@@ -46,8 +51,14 @@ html * {
 }
 
 .hello {
-	margin: auto;
+	/* margin: auto; */
+	margin: 2rem auto;
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font: bold;
+	border: solid rgb(181, 179, 179);
+	border-radius: 1rem;
+	width: fit-content;
+	padding: 0 1rem;
+	color: rgb(96, 97, 98);
 }

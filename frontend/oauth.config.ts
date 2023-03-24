@@ -5,7 +5,7 @@ export const oauthConfig = {
 	tokenPath: "https://github.com/login/oauth/access_token",
 	profilePath: "https://api.github.com/user",
 	scope: "",
-	token: "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",
+	token: "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",
 };
 
 export const server = {

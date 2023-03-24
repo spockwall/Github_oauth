@@ -9,7 +9,7 @@ import RepoList from "./pages/RepoList";
 import IssueList from "./pages/IssueList";
 import IssueCreate from "./pages/IssueCreate";
 import NavBar from "./components/NavBar";
-import "./css/app.css";
+import "./css/nav.css";
 import "./css/table.css";
 import "./css/pagination.css";
 import "./css/button.css";

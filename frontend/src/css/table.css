@@ -8,10 +8,7 @@ body {
 }
 .table-container {
 	margin: auto;
-	/* max-width: 40rem; */
 	max-width: fit-content;
-
-	/* max-height: 600px; */
 	overflow-y: scroll;
 }
 
@@ -21,27 +18,31 @@ body {
 	overflow: hidden;
 	margin: auto;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
+	border-radius: 1rem;
 }
 th,
 td {
 	padding: 15px;
 	background-color: rgba(255, 255, 255, 0.2);
+	color: rgb(82, 81, 81);
 }
 th {
 	text-align: left;
 }
 thead th {
-	background-color: #6774b0;
-	color: aliceblue;
+	background-color: rgb(138, 158, 159);
+	color: white;
+	text-align: center;
 }
 tbody tr:hover {
 	background-color: rgba(255, 255, 255, 0.3);
+	color: rgb(82, 81, 81);
 }
 tbody td {
 	position: relative;
+	text-align: center;
 }
-tbody td:hover:before {
+/* tbody td:hover:before {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -50,4 +51,8 @@ tbody td:hover:before {
 	bottom: -9999px;
 	background-color: rgba(255, 255, 255, 0.2);
 	z-index: -1;
+} */
+
+a {
+	text-decoration: none;
 }

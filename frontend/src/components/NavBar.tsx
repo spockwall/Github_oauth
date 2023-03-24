@@ -7,7 +7,7 @@ export default function NavBar() {
 	const NavItem = (props) => {
 		return (
 			<div className="navitem">
-				<Link to={props.url} style={{ textDecoration: "none" }}>
+				<Link to={props.url} style={{ textDecoration: "none" }} className="link">
 					{props.children}{" "}
 				</Link>
 			</div>

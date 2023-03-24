@@ -8,6 +8,7 @@ import usePagination from "../hooks/usePagination";
 import FunctionBar from "../components/FunctionBar";
 import { getIssue } from "../feature/getIssue";
 import { closeIssue } from "../feature/closeIssue";
+import useData from "../hooks/useData";
 
 const CloseIssueButton = (issueUrl: URL) => {
 	return (
@@ -27,29 +28,38 @@ const CloseIssueButton = (issueUrl: URL) => {
 const issuesColumnsConfig = [
 	{ Header: "Title", accessor: "title" },
 	{
-		Header: "Body",
-		accessor: "body",
+		Header: "Issue No.",
+		accessor: "number",
 	},
 	{
-		Header: "Url",
+		Header: "Link",
 		accessor: "html_url",
+		Cell: ({ cell }) => (
+			<a href={cell.value} target="_blank">
+				⇥
+			</a>
+		),
 	},
-	{ Header: "Delete Issue", accessor: "url", Cell: ({ cell }) => CloseIssueButton(cell.value) },
+	{
+		Header: "State",
+		accessor: "state",
+	},
+	{
+		Header: "Delete Issue",
+		accessor: "url",
+		Cell: ({ cell }) => CloseIssueButton(cell.value),
+	},
 ];
 
 export default function IssueList(): JSX.Element {
 	const { userData } = useAuth();
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [pagination, setPagination] = usePagination<Array>([]);
-	const fetchData = async () => {
-		const res_data: Array[Object] = await getIssue(location.state.issueUrl);
-		setPagination({ ...pagination, data: res_data });
-	};
+	const [pagination, setPagination] = useData("issue", location.state.issueUrl);
 
 	const functionButtons = [
-		<Button onClick={fetchData}>Refresh</Button>,
 		<Button
+			key="state"
 			onClick={() => {
 				navigate("/issuecreate", {
 					state: {
@@ -62,16 +72,12 @@ export default function IssueList(): JSX.Element {
 			New Issue
 		</Button>,
 	];
-	useEffect(() => {
-		if (userData) fetchData();
-	}, [userData]);
 	return (
 		<>
-			<div className="hello">{location.state?.repoName}</div>
+			<div className="hello">{location.state?.repoName.toUpperCase().replace("/", " / ")}</div>
 			<FunctionBar buttons={functionButtons} />
 			<Table data={pagination.currentData} columns={issuesColumnsConfig}></Table>
 			<Pagination pagination={pagination} setPagination={setPagination}></Pagination>
 		</>
 	);
-	return;
 }

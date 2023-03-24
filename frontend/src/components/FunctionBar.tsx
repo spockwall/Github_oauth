@@ -4,7 +4,7 @@ export interface FunctionBarType {
 
 export default function FunctionBar(props: FunctionBarType): JSX.Element {
 	return (
-		<div className="button-container">
+		<div className="function-bar">
 			{props.buttons.map((btn) => {
 				return btn;
 			})}

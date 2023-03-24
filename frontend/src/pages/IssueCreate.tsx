@@ -25,6 +25,9 @@ export default function IssueCreate(props): JSX.Element {
 						title.current.value,
 						content.current.value
 					);
+					if (res.status == 410) {
+						window.alert("Not able to write!!");
+					} else window.alert("Issue created");
 					navigate("/issuelist", {
 						state: {
 							issueUrl: location.state?.issueUrl,

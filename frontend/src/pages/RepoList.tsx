@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import FunctionBar from "../components/FunctionBar";
 import Pagination from "../components/Pagination";
 import Table from "../components/Table";
 import { getRepo } from "../feature/getRepo";
 import useAuth from "../hooks/useAuth";
+import useData from "../hooks/useData";
 import usePagination from "../hooks/usePagination";
 
 const AccessButton = (url: URL, repoName: string) => {
@@ -14,8 +16,9 @@ const AccessButton = (url: URL, repoName: string) => {
 			onClick={async () => {
 				navigate("/issuelist", { state: { issueUrl: url, repoName: repoName } });
 			}}
+			key="enter"
 		>
-			here
+			enter
 		</Button>
 	);
 };
@@ -33,18 +36,9 @@ const reposColumnsConfig = [
 
 export default function RepoList(): JSX.Element {
 	const { userData } = useAuth();
-	const [pagination, setPagination] = usePagination<Array>([]);
-	const fetchData = async () => {
-		const res_data: Array[Object] = await getRepo(userData?.repos_url);
-		console.log(res_data);
-		setPagination({ ...pagination, data: res_data ?? [] });
-	};
-	useEffect(() => {
-		if (userData) fetchData();
-	}, [userData]);
+	const [pagination, setPagination] = useData("repo");
 	return (
 		<>
-			<Button onClick={fetchData}>Refresh</Button>
 			<Table data={pagination.currentData} columns={reposColumnsConfig}></Table>
 			<Pagination pagination={pagination} setPagination={setPagination}></Pagination>
 		</>
