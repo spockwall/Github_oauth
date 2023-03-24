@@ -25,6 +25,7 @@ export function getUserInfo(codeParam, userState: userStateType) {
 	axios
 		.get(server.localUrl + "/getAccessToken", {
 			params: { code: codeParam }, // get github access token
+			Pragma: "no-cache",
 		})
 		.then((response) => {
 			const token = response.data.access_token;

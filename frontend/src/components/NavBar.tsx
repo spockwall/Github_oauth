@@ -34,7 +34,7 @@ export default function NavBar() {
 								{item.text}
 							</NavItem>
 						))}
-						<button className="logout btn-blue" onClick={logoutWithGithub}>
+						<button className="logout btn-blue btn" onClick={logoutWithGithub}>
 							logout
 						</button>
 					</>

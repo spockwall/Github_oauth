@@ -1,4 +1,4 @@
-button {
+.btn {
 	width: 140px;
 	height: 45px;
 	font-family: "PingFang", sans-serif;
@@ -15,13 +15,6 @@ button {
 	cursor: pointer;
 	outline: none;
 	margin: 1rem;
-}
-
-.function-bar {
-	margin: auto;
-	width: 60%;
-	margin-bottom: 1rem;
-	text-align: center;
 }
 
 .btn-blue {

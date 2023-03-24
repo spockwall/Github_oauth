@@ -1,6 +1,6 @@
 import { oauthConfig } from "../../oauth.config";
 export const getRepo = (repoUrl: URL) => {
-	return fetch(repoUrl, {
+	return fetch(oauthConfig.userRepoPath, {
 		method: "GET",
 		headers: new Headers({
 			Authorization: "token " + oauthConfig.token,
