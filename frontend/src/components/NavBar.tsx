@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { logoutWithGithub } from "../feature/basicInfo/logout";
+import good from "../assets/good.png";
 
 export default function NavBar() {
 	const { auth, userData } = useAuth();
@@ -39,7 +40,7 @@ export default function NavBar() {
 						</button>
 					</>
 				) : (
-					<div>goodwebsite</div>
+					<div>GOOD WEBSITE</div>
 				)}
 			</div>
 		</nav>

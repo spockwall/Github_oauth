@@ -5,8 +5,8 @@ export const oauthConfig = {
 	tokenPath: "https://github.com/login/oauth/access_token",
 	profilePath: "https://api.github.com/user",
 	userRepoPath: "https://api.github.com/user/repos",
+	issuePath: "https://api.github.com/user/issues",
 	scope: "",
-	token: "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",
 };
 
 export const server = {

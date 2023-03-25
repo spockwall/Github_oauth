@@ -1,18 +1,40 @@
 import useAuth from "../hooks/useAuth";
+import { encryptToken } from "../feature/AES";
 import { loginWithGithub } from "../feature/basicInfo/login";
 import Button from "../components/Button";
-import FunctionBar from "../components/FunctionBar";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { validateToken } from "../feature/validateToken";
+
+const cookieConfig = "path=/ " + "httpOnly=true " + "sameSite=true";
 
 export default function Login(): JSX.Element {
 	const { auth, userData } = useAuth();
-	const buttons = [
-		<Button onClick={loginWithGithub} key="login">
-			login Github
-		</Button>,
-	];
+	const personlToken = useRef("");
+	const navigate = useNavigate();
+
 	return (
-		<>
-			<FunctionBar buttons={buttons}></FunctionBar>
-		</>
+		<div className="login-container">
+			<div className="token-input-container">
+				<label>github personal token</label>
+				<input type="text" ref={personlToken} />
+			</div>
+			<Button
+				onClick={async (e) => {
+					e.preventDefault();
+					const valid: Boolean = await validateToken(personlToken.current.value);
+					if (valid) {
+						const encrptToken = encryptToken(personlToken.current.value);
+						document.cookie = `personalAccessToken=${encrptToken} ` + cookieConfig;
+						loginWithGithub();
+					} else {
+						window.alert("INVALID TOKEN");
+						navigate("/login");
+					}
+				}}
+			>
+				login Github
+			</Button>
+		</div>
 	);
 }

@@ -1,6 +1,6 @@
 export interface BtnType {
 	children: any;
-	onClick?: any;
+	onClick?: Function;
 	className?: string;
 	type?: string;
 }

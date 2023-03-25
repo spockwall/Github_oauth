@@ -1,9 +1,12 @@
 import { oauthConfig } from "../../oauth.config";
+import { decryptTokenFromCookie } from "./AES";
+
 export const getIssue = (issueUrl: URL) => {
+	const token = decryptTokenFromCookie("personalAccessToken");
 	return fetch(issueUrl.replace("{/number}", ""), {
 		method: "GET",
 		headers: new Headers({
-			Authorization: "token " + oauthConfig.token,
+			Authorization: "token " + token,
 			Accept: "application/vnd.github+json",
 		}),
 	})

@@ -15,6 +15,7 @@ import "./css/pagination.css";
 import "./css/button.css";
 import "./css/issue.css";
 import "./css/bar.css";
+import "./css/login.css";
 
 function App() {
 	return (

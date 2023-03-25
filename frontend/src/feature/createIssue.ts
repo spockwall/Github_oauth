@@ -1,5 +1,7 @@
 import { oauthConfig } from "../../oauth.config";
+import { decryptTokenFromCookie } from "./AES";
 export const createIssue = (issueUrl: URL, title: string, content: string) => {
+	const token = decryptTokenFromCookie("personalAccessToken");
 	return fetch(issueUrl, {
 		method: "POST",
 		body: JSON.stringify({
@@ -7,7 +9,7 @@ export const createIssue = (issueUrl: URL, title: string, content: string) => {
 			body: content,
 		}),
 		headers: new Headers({
-			Authorization: "token " + oauthConfig.token,
+			Authorization: "token " + token,
 			Accept: "application/vnd.github+json",
 		}),
 	})
